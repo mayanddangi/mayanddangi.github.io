@@ -221,7 +221,7 @@
     speed: 400,
     loop: true,
     autoplay: {
-      delay: 5000,
+      delay: 8000,
       disableOnInteraction: false
     },
     pagination: {
@@ -254,7 +254,7 @@
    */
   window.addEventListener('load', () => {
     AOS.init({
-      duration: 1000,
+      duration: 650,
       easing: 'ease-in-out',
       once: true,
       mirror: false
