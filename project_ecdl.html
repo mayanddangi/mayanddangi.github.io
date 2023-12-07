@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+<title>ECDL</title>
+</head>
+<body>
+	<div id="layout-content">
+		<div id="toptitle">
+			<h1>External Cavity Diode Laser</h1>
+		</div>
+		
+		<!-- <table class="imgtable"><tr><td> -->
+			<!-- <img src="anand_cropped.png" alt="" height="180px" />&nbsp;</td> -->
+			<!-- <td align="left"><p>I am an Assistant Professor in <a href="http://www.eecs.mit.edu/" target=&ldquo;blank&rdquo;>EECS</a> and <a href="https://www.csail.mit.edu/" target=&ldquo;blank&rdquo;>CSAIL</a> at MIT. Prior to starting as a faculty member, I was a postdoc at the <a href="http://iqim.caltech.edu/" target=&ldquo;blank&rdquo;>Institute for Quantum Information and Matter</a> at -->
+			<!-- Caltech. I obtained my PhD in Physics in 2018 at MIT, under the supervision of <a href="http://web.mit.edu/aram/www/" target=&ldquo;blank&rdquo;>Aram Harrow</a>. <br /> -->
+			<!-- <br /> -->
+			<!-- </p> -->
+			<!-- <p><b>Office:</b> 32-G624<br /> -->
+			<!-- <b>Email:</b> first name and last initial at mit dot edu -->
+			<!-- </p> -->
+			<!-- </td></tr> -->
+		<!-- </table> -->
+		<h2>Introduction</h2>
+		<p>
+			An External Cavity Diode Laser (ECDL) is a type of laser system that employs an external cavity, or optical feedback mechanism, to enhance its performance characteristics. 
+			In contrast to conventional diode lasers that rely solely on internal feedback, ECDLs utilize an external cavity, typically created using reflective components like diffraction gratings or mirrors. The external cavity provides a high level of control over the laser's output characteristics. 
+			In In the field of atomic, molecular, and optical physics, external cavity diode lasers (ECDLs) play a crucial role due to their numerous advantages, including a narrow linewidth, wide wavelength tunability, frequency stability, and cost-effectiveness. 
+			These lasers have become essential in a wide range of applications, including high-precision spectroscopy, laser cooling, and the investigation of coherent atomic processes like electromagnetically-induced transparency (EIT), as well as their importance in metrology.
+			In this project, we have design a compact, fully tunable, inexpensive and simple narrow linewidth ECDL. 
+		</p>
+		<div class="center-container">
+			<!-- <figure> -->
+			<img src="assets/img/ecdl_laser.bmp" alt="ECDL Laser">
+			<figcaption>External Cavity Diode Laser</figcaption>
+			<!-- </figure> -->
+		</div>
+		<h2>Construction of Laser</h2>
+		<p>
+		The opto-mechanical design of our External Cavity Diode Laser (ECDL) is carefully engineered to ensure versatility, stability, and precision in laser operation. 
+		As illustrated in figure below, the ECDL comprises several key components, including a collimation mount for accommodating various wavelength laser diodes and collimation lenses without having any design modifications. 
+		The laser casing is made up of aluminium with 10mm thicker wall to provide rigidity and vibrational stability. 
+		</p>
+		<p>
+		The laser diode (Thorlabs L852H1) and collimation lens (Thorlabs C110TMD-B, aspheric lens with f = 6.24 mm and NA = 0.40) are carefully positioned on the collimation tube to maintain a shared optical axis and mechanical stability. 
+		This design choice helps to reduce the influence of fluctuations in ambient temperature on their relative positions. 
+		For driving the laser diode, a current and temperature controller from Thorlabs (ITC110) is used. Thorlabs GH13-18V is used as visible reflecting grating with 1800 lines/mm and 10% diffraction efficiency at 852 nm having polarization parallel to the grooves. It is glued over PZT chip on Thorlabs kinetic mirror mount.
+		</p>
+		<p>
+		In the current design, the external cavity length is of 35mm. This system also has an active thermal control system which is implemented by incorporating a Peltier thermoelectric cooler (TEC) between the mount plate and bottom enclosure. 
+		We secure the thermistor (Thorlabs TH10K) in place by using conducting glue to attach it to a small groove on the collimation mount. 
+		By utilizing TEC and a temperature controller (ITC110), the system ensures the stability of the laser diode's temperature and prevents any alterations in the cavity length caused by fluctuations in ambient temperature.
+		</p>
+		<div class="center-container">
+			<img src="assets/img/ecdl_mech.bmp" alt="ECDL Laser">
+			<figcaption>External Cavity Diode Laser</figcaption>
+		</div>
+		
+		<h2>Acknowledgement</h2>
+		<p>I wish to express my sincere appreciation to my supervisor Asst. Prof. Dr. Santra, Indian Institute of Technology Delhi, for his guidance at all stages of the project. His guidance gave me immense
+		confidence and encouragement that helped me to give my best and develop a better understanding of the subject. I am thankful to him for the freedom he gave me to explore
+		things on my own. I would also like to thank Mr. Aditya Choudhary,Kamalkant and other PhD's of CAQT Lab for his consistent guidance.  
+		</p>
+		<div id="footer">
+		<div id="footer-text">
+		<!-- Page generated 2023-11-16 21:05:00 EST, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>. -->
+		</div>
+		</div>
+	</div>
+</body>
+</html>
