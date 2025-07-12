@@ -1031,6 +1031,124 @@ section {
   }
 }
 
+/*-------------------------------------------------------------
+# extra-curricular
+-------------------------------------------------------------*/
+
+
+/* #publications .resume-item h4 { */
+  /* color: #007bff; /* Example: a different color for publication titles */ */
+/* } */
+
+#extra-curricular .icon-box {
+  border: 1px solid #eee; /* Example: Add a subtle border */
+}
+
+/*--------------------------------------------------------------
+# Publications
+--------------------------------------------------------------*/
+
+.publication-item {
+  background: #fff;
+  box-shadow: 0px 5px 25px 0px rgba(110, 123, 131, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%; /* Ensure consistent height for cards */
+  display: flex;
+  flex-direction: column;
+}
+
+.publication-item.featured-item .row {
+  display: flex;
+  height: 100%;
+}
+
+.publication-item.featured-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image covers the area without distortion */
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+/* Adjust image border-radius for mobile */
+@media (max-width: 768px) {
+  .publication-item.featured-item img {
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 8px;
+    height: 180px; /* Adjust height for mobile thumbnail */
+  }
+}
+
+.publication-item .publication-content {
+  padding: 20px;
+  flex-grow: 1; /* Allows content to expand and fill space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes button to bottom */
+}
+
+.publication-item h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.publication-item h4 a {
+  color: #45505b;
+  transition: 0.3s;
+}
+
+.publication-item h4 a:hover {
+  color: #0563bb;
+}
+
+.publication-item .journal-info {
+  font-size: 14px;
+  color: #728394;
+  margin-bottom: 10px;
+}
+
+.publication-item .summary {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.publication-item .btn-primary {
+  background-color: #0563bb;
+  border-color: #0563bb;
+  font-size: 14px;
+  padding: 8px 15px;
+  border-radius: 50px;
+  align-self: flex-start; /* Aligns button to the start */
+}
+
+.publication-item .btn-primary:hover {
+  background-color: #0678e3;
+  border-color: #0678e3;
+}
+
+.publication-item .btn-primary i {
+  margin-left: 5px;
+}
+
+/* Specific styling for the 'All Published Works' list within the publications section */
+#publications .resume-item h4 {
+  color: #0563bb; /* Keeps your existing resume item title color */
+}
+
+#publications .resume-item ul {
+  padding-left: 20px;
+  list-style: disc; /* Use discs for bullet points */
+}
+
+#publications .resume-item ul li {
+  padding-bottom: 5px; /* Adjust spacing */
+}
+
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
