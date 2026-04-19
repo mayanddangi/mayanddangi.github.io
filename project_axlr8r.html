@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" style="background: #000;">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>AXLR8R Formula Racing - Mayand Dangi</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: transparent !important;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .section-title h2 {
+      color: #ff0000 !important;
+      text-transform: uppercase;
+      font-style: italic;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+    
+    .spec-card {
+      background: rgba(15, 15, 15, 0.9);
+      border: 1px solid rgba(255, 0, 0, 0.3);
+      border-radius: 4px;
+      border-left: 4px solid #ff0000;
+      padding: 20px;
+      margin-bottom: 20px;
+      color: #e0e0e0;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+    }
+    .spec-card:hover {
+      box-shadow: 0 4px 25px rgba(255, 0, 0, 0.3);
+      border-color: rgba(255, 0, 0, 0.8);
+    }
+    .spec-card i {
+      color: #ff0000;
+      font-size: 28px;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .spec-card h5 {
+      color: #ffffff;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-style: italic;
+    }
+    
+    .portfolio-info p {
+      text-align: justify;
+      color: #cccccc;
+    }
+    .portfolio-info h3 {
+      color: #ff0000;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-bottom: 2px solid #333;
+      padding-bottom: 10px;
+      margin-top: 40px;
+    }
+    
+    .hardware-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+    .hardware-item {
+      background: #111;
+      border: 1px solid #333;
+      border-bottom: 3px solid #ff0000;
+      border-radius: 4px;
+      padding: 15px;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .hardware-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+    }
+    .hardware-item h5 {
+      color: #ffffff;
+      margin: 0;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+    
+    /* Analog F1 Speedometer */
+    .analog-dash {
+      background: #111;
+      border: 2px solid #333;
+      border-radius: 15px;
+      padding: 30px;
+      margin: 0 auto 40px auto;
+      max-width: 450px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(255,0,0,0.1);
+    }
+    
+    .analog-gauge {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.2));
+    }
+
+    #needle {
+      transition: transform 0.05s linear;
+    }
+
+    /* Background Animation Overlay */
+    #afr-bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      display: block;
+    }
+
+    /* Transparent Main to allow interaction with background */
+    #main {
+      position: relative;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    .container, .spec-card, .hardware-item, .analog-dash, a {
+      pointer-events: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="afr-bg-canvas"></canvas>
+  <main id="main" style="margin-left: 0; background: transparent;">
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+        
+        <div class="section-title text-center">
+          <h2>AXLR8R Formula Racing</h2>
+          <p style="color: #ccc; font-weight: 600; text-transform: uppercase;">Embedded Design Engineering</p>
+        </div>
+
+        <div class="row gy-4">
+          <div class="col-lg-10 offset-lg-1">
+            <div class="portfolio-info" style="background: transparent; box-shadow: none;">
+            
+              <!-- Analog Speedometer -->
+              <div class="analog-dash">
+                <svg viewBox="0 0 300 180" class="analog-gauge">
+                  <!-- Dial Arch (0 to 180 deg) Center: 150, 150 -->
+                  <path d="M 30 150 A 120 120 0 0 1 270 150" fill="none" stroke="#222" stroke-width="15" stroke-linecap="butt" />
+                  
+                  <!-- Ticks / Scale Marks -->
+                  <path d="M 30 150 L 45 150" fill="none" stroke="#fff" stroke-width="2"/>
+                  <path d="M 65 65 L 75 75" fill="none" stroke="#fff" stroke-width="2"/>
+                  <path d="M 150 30 L 150 45" fill="none" stroke="#fff" stroke-width="2"/>
+                  <path d="M 235 65 L 225 75" fill="none" stroke="#fff" stroke-width="2"/>
+                  <path d="M 270 150 L 255 150" fill="none" stroke="#fff" stroke-width="2"/>
+
+                  <!-- Labels -->
+                  <text x="25" y="170" fill="#888" font-size="12" font-family="sans-serif" font-weight="700" text-anchor="middle">0</text>
+                  <text x="55" y="60" fill="#888" font-size="12" font-family="sans-serif" font-weight="700" text-anchor="middle">80</text>
+                  <text x="150" y="20" fill="#888" font-size="12" font-family="sans-serif" font-weight="700" text-anchor="middle">160</text>
+                  <text x="245" y="60" fill="#888" font-size="12" font-family="sans-serif" font-weight="700" text-anchor="middle">240</text>
+                  <text x="275" y="170" fill="#ff0000" font-size="12" font-family="sans-serif" font-weight="700" text-anchor="middle">320</text>
+                  
+                  <!-- Redline Sector -->
+                  <path d="M 235 65 A 120 120 0 0 1 270 150" fill="none" stroke="#ff0000" stroke-width="15" stroke-linecap="butt" />
+
+                  <!-- Digital Overlay -->
+                  <text x="150" y="130" fill="#fff" font-size="38" font-family="'Courier New', monospace" font-weight="bold" text-anchor="middle" id="analog-speed-text">000</text>
+                  <text x="150" y="145" fill="#ff0000" font-size="10" font-family="'Courier New', monospace" font-weight="bold" text-anchor="middle">KM/H</text>
+                  <text x="150" y="165" fill="#888" font-size="14" font-family="'Courier New', monospace" font-weight="bold" text-anchor="middle" id="analog-gear-text">GEAR: 1</text>
+                  
+                  <!-- The Sweeping Needle -->
+                  <g id="needle" transform="rotate(-90 150 150)">
+                    <polygon points="150,155 145,150 150,30 155,150" fill="#ff0000" />
+                    <circle cx="150" cy="150" r="8" fill="#fff" />
+                    <circle cx="150" cy="150" r="3" fill="#000" />
+                  </g>
+                </svg>
+              </div>
+
+              <h3>1. Role & Engineering Overview</h3>
+              <p>
+                As an <strong>Embedded Design Engineer</strong> for the AXLR8R Formula Racing team, I was responsible for designing and testing the vital electronic hardware of the Electric Control Units (ECUs) functioning across the vehicle. The core architecture relied fundamentally on robust and instantaneous intra-vehicle communications.
+              </p>
+              
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="spec-card">
+                    <i class="bx bx-microchip"></i>
+                    <h5>ECU Hardware Architecture</h5>
+                    <p>Designed electronic hardware of Electric Control Units based on STM32F0 and STM32F4 microcontrollers designated for intra-vehicle communication, managing, and manipulating received data from the diverse sensors equipped on the vehicle.</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="spec-card">
+                    <i class="bx bx-git-branch"></i>
+                    <h5>CAN Bus Network Implementation</h5>
+                    <p>Successfully implemented a highly robust three-node CAN (Controller Area Network) communication protocol acting as the backbone interface strictly between the distributed STM32F4 based ECUs.</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="spec-card">
+                    <i class="bx bx-code-block"></i>
+                    <h5>Embedded Software Dev</h5>
+                    <p>Developed comprehensive STM32F4 ECUs code using C targeting high-fidelity data retrieval from sensors running on UART, SPI, and I2C. This supported active data checks, real-time message manipulation, continuous intra-ECU signaling, and highly time-critical decision execution layers based on received inputs.</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="spec-card">
+                    <i class="bx bx-test-tube"></i>
+                    <h5>Validation & Testing</h5>
+                    <p>Built and systematically deployed stringent validation test plans and hardware-in-the-loop test scenarios to consistently prove the operational correctness of all custom designed systems prior to track engagement.</p>
+                  </div>
+                </div>
+              </div>
+
+
+              <h3>2. Hardware Design Showcase</h3>
+              <p>
+                Below is a visual representation of the highly-dense, custom-routed PCB layouts executing the firmware required to aggregate and analyze real-time motorsport sensor telemetry.
+              </p>
+              
+              <!-- Placeholder Gallery. Tell the user to replace src attributes later -->
+              <div class="hardware-gallery">
+                <div class="hardware-item">
+                  <!-- IMPORTANT: PLEASE DROP YOUR IMAGE IN THE ASSETS FOLDER AND UPDATE SRC -->
+                  <img src="assets/img/placeholder_afr_1.png" alt="Front Board 20.0 - Hardware Logic">
+                  <h5>Front Board 20.0 Layout</h5>
+                </div>
+                <div class="hardware-item">
+                  <img src="assets/img/placeholder_afr_2.png" alt="Rear Board 20.0 - Traces">
+                  <h5>Rear Board 20.0 Routing Layer</h5>
+                </div>
+                <div class="hardware-item">
+                  <img src="assets/img/placeholder_afr_3.png" alt="ECUs Setup">
+                  <h5>Full ECU Connected Setup</h5>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Local Script References -->
+  <script src="assets/js/main.js"></script>
+  
+  <!-- Three.js for 3D Race Track Background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="assets/js/afr-setup-animation.js"></script>
+  
+  <script>
+    // Analog Speedometer Logic
+    document.addEventListener("DOMContentLoaded", () => {
+      const needle = document.getElementById("needle");
+      const speedText = document.getElementById("analog-speed-text");
+      const gearText = document.getElementById("analog-gear-text");
+      
+      let speed = 0;
+      let rpm = 0;
+      let gear = 1;
+      const maxSpeed = 320;
+      const shiftRpm = 12000;
+      
+      setInterval(() => {
+        // Accelerate Logic
+        if (gear < 8) {
+          rpm += 200 + Math.random() * 100;
+          speed += (1.5 / gear);
+          if (rpm > shiftRpm) {
+            gear++;
+            rpm = 8000; 
+          }
+        } else {
+          if (speed < maxSpeed) speed += 0.2;
+          rpm = 10000 + ((speed - 280) / 40) * 2500;
+          if (rpm > shiftRpm + 500) rpm = shiftRpm + 500 + (Math.random() * 100 - 50); 
+        }
+        
+        // Loop simulation hard braking
+        if (speed >= maxSpeed && Math.random() > 0.98) {
+           speed = 80 + Math.random()*20;
+           gear = 2;
+           rpm = 7000;
+        }
+
+        // Update Text
+        speedText.textContent = Math.floor(speed).toString().padStart(3, '0');
+        gearText.textContent = `GEAR: ${gear}`;
+        
+        // Map Speed to sweep Angle (-90 deg to +90 deg)
+        let angle = -90 + (speed / maxSpeed) * 180;
+        // Clamp Angle just in case
+        if (angle > 90) angle = 90;
+        if (angle < -90) angle = -90;
+
+        needle.setAttribute("transform", `rotate(${angle} 150 150)`);
+      }, 50);
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Design of Optical Tweezers</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- MathJax for rendering equations -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    .math-block {
+      background: rgba(0, 255, 200, 0.05);
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      border-left: 3px solid rgba(0, 255, 200, 0.4);
+      overflow-x: auto;
+    }
+    .algorithm-block {
+      background: rgba(10, 15, 30, 0.8);
+      font-family: 'Courier New', Courier, monospace;
+      padding: 15px;
+      border-radius: 8px;
+      color: #00ffc8;
+      margin-bottom: 20px;
+      border: 1px solid rgba(0, 255, 200, 0.2);
+    }
+    .portfolio-info p {
+      text-align: justify;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Global Background Floating Atoms Canvas -->
+  <canvas id="floating-atoms-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none;"></canvas>
+
+  <main id="main" style="margin-left: 0;">
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+        
+        <div class="section-title">
+          <h2>Designing of Optical Tweezers</h2>
+          <p>Capturing and Sorting Single Neutral Atom Arrays</p>
+        </div>
+
+        <div class="row gy-4">
+          <div class="col-lg-10 offset-lg-1">
+            <div class="portfolio-info">
+              
+              <h3>1. Introduction</h3>
+              <p>
+                In the famous paper by Richard Feynman, namely ”Simulating Physics with Computer”, he pointed out that it is impossible to simulate quantum mechanical systems with classical computers due to their complexity. He also stated that utilizing these complexities of quantum systems using a quantum computer can have a broad revolutionary impact on many challenging problems. According to the DiVincenzo criteria, a robust qubit is one of the necessary criteria for building a quantum computer. Extensive research is going on building a quantum computer with different types of qubits such as neutral atoms, ions, superconducting Josephson junctions, and optomechanical resonators.
+              </p>
+              <p>
+                Among the numerous categories investigated, arrays of single neutral atoms seem to be a very robust and promising technology. Its long coherence time and high scalability give it a distinct edge over other qubits, while achieving high gate fidelity on neutral atoms remains a challenge. In a neutral atom qubit, any two states out of many available states can be used for a qubit; however, for a long coherence time, two hyperfine states in the ground state are preferred. The realization that optical tweezers can confine neutral atoms inspired the notion of employing them as qubits.
+              </p>
+              <p>
+                Optical tweezers are a powerful technique for holding and moving atoms that utilizes the electric dipole interaction force to manipulate quantum objects’ external degrees of freedom. Optical tweezers capture and isolate a single atom from a precooled ensemble of atoms without inducing optical transitions, preserving the atom’s current state. Optical tweezers are considered a versatile tool that can be achieved using microlens arrays, diffractive optical elements, optical standing waves, spatial light modulators (SLM), and many more. Holographically generated arrays of tightly focused optical tweezers using an SLM are a typical and more flexible way of designing optical tweezers.
+              </p>
+              <p>
+                In this project, we aim to create optical tweezers for trapping neutral atoms and then implement the algorithm to generate the array of trapped atoms using dynamic holography. Many research groups have attempted various methods to construct arrays of atomic traps that can hold a single atom or a collection of atoms. The approaches utilized range from multiple dipole trap beams to the creation of optical lattices and arrays of microtraps using fixed optics. Since the probability of an atom getting trapped in an array is 0.5, the probability of getting a perfect array of atoms is extremely low. The inflexibility of these methods in terms of the arrangement of atoms is one of the significant problems. Therefore, we have opted to use the SLM for creating optical tweezers, enabling us to apply dynamic holography and reorganize atoms.
+              </p>
+
+              <h3>2. Methodology</h3>
+              <p>
+                Single atoms held in an array of optical tweezers are necessary for quantum simulation and quantum information processing with Rydberg atoms. Multiple approaches have been taken to create arrays of atomic traps, of which the use of SLM to create arrays of optical tweezers sounds promising owing to its advantage over other approaches. Optical tweezers made by fixed optics lack flexibility in arrangement. At the same time, holographic arrays have the relative ease of creating arbitrary two-dimensional patterns of optical tweezers and give the flexibility to reconfigure the array. In our project, we use this technique to design an array of optical tweezers.
+              </p>
+
+              <h4>2.1 Optical Setup</h4>
+              <div style="margin-bottom: 25px; overflow: hidden; border-radius: 12px; border: 1px solid rgba(0, 255, 200, 0.2); box-shadow: 0 5px 20px rgba(0,0,0,0.5);">
+                <canvas id="tweezer-setup-canvas" style="width: 100%; display: block; background: #070b14;"></canvas>
+              </div>
+              <p>
+                The preliminary experimental setup is generated for characterizing optical tweezers. For the experiment presented in this report, we have used a 632nm diode laser as a light source and a Holoeye Pluto Spatial Light Modulator. In the original experiment, a custom-designed external cavity diode laser of 976nm will be used.
+              </p>
+              <p>
+                In the setup, a collimated Gaussian beam with a uniform spatial phase and real amplitude \( A_{laser}(x, y) = |A_{laser}(x, y)| \) from the laser falls on the polarizing beam splitting (PBS) cube to have a clean polarization of the beam. Then the beam passes through a Beam Expander to ensure complete illumination of the surface of the SLM, and the complex amplitude of the incident beam is given by \( A_{in}(x, y) \).
+              </p>
+              <p>
+                Let’s assume the SLM to be a rectangular aperture of size \( L_x \times L_y \) and modulates the phase by \( \phi(x, y) \). Then the modulated beam immediately after the SLM is given by:
+              </p>
+              <div class="math-block">
+                \[ A_{SLM} = A_{in}(x, y) \text{rect}\left(\frac{x}{2L_x}, \frac{y}{2L_y}\right) e^{i\phi(x,y)} \]
+              </div>
+              <p>
+                The beam is now passed through the iris having an opening of radius \( r \). Afterwards, it is finally focused by the lens of focal length \( f \) in the focal plane, in the preliminary optics setup. The amplitude distribution at the focal plane is the same as the amplitude of the targeted intensity distribution given by:
+              </p>
+              <div class="math-block">
+                \[ \tilde{A}_f (\tilde{x}, \tilde{y}) = \mathcal{F}[A_{SLM} (x, y)\text{circ}(r)] \]
+              </div>
+              <p>
+                The beam after getting modulated by the SLM, is reflected from a dichroic mirror having a good reflectivity at 976nm wavelength and transmissivity at 852nm and will be focused by the microscope objective inside the glass cell. The focused tweezers array is imaged by a CCD camera. After loading, the atoms’ fluorescence is collected by the same objective lens and transmitted through the dichroic mirror to image it on the CMOS camera. The intensity pattern obtained on the screen of the CMOS camera will be used to determine the position of trapped atoms. The position of the trapped atom is one of the input parameters for the path planning algorithm to ensure that the trapped array configuration is defect-free.
+              </p>
+
+              <h4>2.2 Design of Optical Tweezers</h4>
+              <p>
+                From the Fourier transform equation of the previous section, we can see that the result strongly depends on the \( \phi(x, y) \) term. Since we are using a phase-only SLM in the experiment, it becomes crucial to retrieve the phase corresponding to the target intensity distribution of the array of optical tweezers.
+              </p>
+
+              <h5>2.2.1 Phase-Mask Generation</h5>
+              <p>
+                We are using the Gerchberg–Saxton (GS) algorithm for the generation of the phase mask that has to be imprinted on the SLM. This algorithm was initially used in electron beam microscopy to retrieve phase information from the intensity distribution, which is also known as the Error-Reduction Algorithm. It has now become a usual choice as a phase retrieval algorithm for beam shaping and optical information processing.
+              </p>
+              <p>
+                The GS algorithm uses the iterative virtual propagation of the light field between the SLM’s plane and the lens’ focal plane, intending to converge on an appropriate phase to produce a targeted intensity distribution. The algorithm is proposed below:
+              </p>
+              
+              <div class="algorithm-block">
+                <strong>Algorithm 1: Gerchberg–Saxton (GS) algorithm</strong><br><br>
+                Input: \( A_{source} \), \( A_{target} \), \( \phi_r \), iter<br>
+                Output: \( \phi_r \)<br><br>
+                A ← exp(i * \( \phi_r \))<br>
+                i ← 0<br>
+                while i &lt; iter do<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;B ← abs(\( A_{source} \)) * exp(i * angle(A))<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;C ← FFT[B]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;D ← abs(\( A_{target} \)) * exp(i * angle(C))<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;A ← IFFT[D]<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;i ← i + 1<br>
+                end while<br>
+                \( \phi_r \) ← angle(A)<br>
+                return \( \phi_r \)
+              </div>
+
+              <p>
+                To determine the adequate phase pattern corresponding to the targeted intensity distribution, we have to numerically implement the above-described GS algorithm. For this, we have discretized the field in an \( N_x \times N_y \) matrix in the SLM plane with spacing of one cell as \( \Delta x \times \Delta y \). Thus, we can write discrete complex amplitude in the SLM field as:
+              </p>
+              <div class="math-block">
+                \[ A_{SLM} (m\Delta x, n\Delta y) = A_{in}(m\Delta x, n\Delta y)e^{i\phi_{mn}} \]
+                \[ A_{SLM} (x, y) = \sum_{m=0}^{N_x-1} \sum_{n=0}^{N_y-1} \delta(x - m\Delta x)\delta(y - n\Delta y)A_{in}(m\Delta x, n\Delta y)e^{i\phi_{mn}} \]
+              </div>
+              <p>
+                where \( A_{in}(\alpha\Delta x, \beta\Delta y) \) is the incident light field on the SLM which is the same as the \( A_{source} \) described in the algorithm and \( \phi_{\alpha\beta} \) is the phase delay obtained using the GS algorithm corresponding to the pixel \( \alpha\beta \). The field in the focal plane of the lens is given by:
+              </p>
+              <div class="math-block">
+                \[ \tilde{A}_f (u\Delta \tilde{x}, v\Delta \tilde{x}) = \text{DFT}[A_{SLM} (m\Delta x, n\Delta y)] \]
+                \[ \tilde{A}_f (u\Delta \tilde{x}, v\Delta \tilde{x}) = \sum_{m=0}^{N_x-1} \sum_{n=0}^{N_y-1} A_{in}(m\Delta x, n\Delta y)e^{i\phi_{mn}} e^{-2\pi i(\frac{mu}{N_x}+\frac{nv}{N_y})} \]
+              </div>
+              <p>
+                where,
+              </p>
+              <div class="math-block">
+                \[ \Delta \tilde{x} = \frac{\lambda f}{L_x} \quad \text{and} \quad \Delta \tilde{y} = \frac{\lambda f}{L_y} \]
+                \[ \tilde{L}_x = \frac{\lambda f}{\Delta x} \quad \text{and} \quad \tilde{L}_y = \frac{\lambda f}{\Delta y} \]
+              </div>
+
+              <h4>2.3 Defect Free Atom Array Formation</h4>
+              <p>
+                Let us assume that the probability for atoms getting trapped is 50 percent per site. Therefore, the probability of filling all sites of an array with \( N \) atoms is \( (\frac{1}{2})^N \), which is very small. In order to achieve contiguous arrays of atoms with high probability, we have designed our system to capture atoms more than \( 2N \). Afterwards, we can fill the vacant sites in the array from nearby reservoir atoms.
+              </p>
+              <p>
+                Without considering the loss of an atom during the transportation for filling vacancies, the probability of filling is now \( P(N|M) \) given as:
+              </p>
+              <div class="math-block">
+                \[ P(N|M) = \frac{1}{2^M} \sum_{n=N}^{M} \binom{M}{n} \]
+              </div>
+              <p>
+                which is greater than \( (\frac{1}{2})^N \), where \( P(N|M) \) is the probability of capturing more than or equal to \( N \) atoms out of the starting trap array of \( M \) traps. To accomplish this, we must first determine the arrangement of atoms captured in tweezers, and then identify the voids that must be filled. Following that, we’ll undertake path planning for individual atoms to determine their location as a function of time. Then, based on the route, we’ll obtain the phase mask and transport the atom.
+              </p>
+
+              <h5>2.3.1 Path Planning</h5>
+              <p>
+                In the suggested approach, atom loss can also occur while the atom is being transported. To minimize the loss, we must complete the transportation in the shortest amount of time and on the shortest available path. This appears to be a combinatorial optimization problem in which we must choose the optimal path from among all feasible paths. The solution to this problem can be found using the Hungarian matching algorithm.
+              </p>
+              
+              <p><strong>Hungarian Algorithm</strong></p>
+              <p>
+                Finding matches for filling the vacancies is a kind of matching problem where we have two sets namely, captured atom configuration \( I = \{x_i, y_i\} \) and targeted array \( T = \{a_j, b_j\} \) which can be treated as a set of bipartite graph \( G(I, T, E) \) where \( E \) is each possible edge having cost \( c_{ij} \). In the language of graph theory, our problem is to find the best-suited match with the minimum cost (distance between two sites), and matching is guaranteed because of Hall’s marriage theorem.
+              </p>
+              <p>
+                There are several algorithms for solving these sorts of assignment problems, such as the Hopcroft-Karp algorithm and back-propagation (brute force), but the Hungarian Algorithm is considered to be the best since it provides an optimal solution in substantially less time than other algorithms.
+              </p>
+              <p>
+                The Hungarian Technique is a combinatorial optimization algorithm that solves matching problems with a cost restriction. It is known to be efficient as the time complexity of this algorithm is \( \mathcal{O}(n^3) \). The Hungarian algorithm gives us a matching between two sets \( I \) and \( T \) of bipartite graph \( G(I, T, E) \) minimizing the total cost. It also guarantees a collision-free path because these matchings will give a larger distance to travel than the collision-free matching. Also, in our case we are using cost to avoid the trespassing path:
+              </p>
+              <div class="math-block">
+                \[ c_{ij} = (x_i - a_j)^2 + (y_i - b_j)^2 \]
+              </div>
+              <p>
+                This metric process allows us to implement movement of atomic tweezers in order to make our array defect-free efficiently.
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/floating-atoms.js"></script>
+
+  <!-- Three.js for 3D Optical Tweezers Simulation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="assets/js/tweezer-setup-animation.js"></script>
+</body>
+
+</html>

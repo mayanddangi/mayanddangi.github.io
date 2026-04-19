@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Paintings | Mayand Dangi</title>
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Raleway:300,400,500,600,700|Poppins:300,400,500,600,700" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body class="creative-page">
+  <!-- Global Background -->
+  <canvas id="floating-atoms-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none;"></canvas>
+
+  <nav class="back-nav">
+    <a href="index1.html#extra-curricular" class="btn-back">
+      <i class="bx bx-left-arrow-alt"></i> Back to Home
+    </a>
+  </nav>
+
+  <main id="main">
+    <div class="creative-container">
+      <header class="page-header" data-aos="fade-down">
+        <h1>Paintings</h1>
+        <div class="subtitle">Artistic Entropy & Visual Theorems</div>
+      </header>
+
+      <section class="gallery-grid">
+        <div class="painting-item" data-aos="zoom-in" data-aos-delay="100">
+          <a href="assets/img/p_quantum.png" class="glightbox" data-gallery="gallery1" title="Quantum Superposition">
+            <img src="assets/img/p_quantum.png" alt="Quantum Superposition">
+            <div class="painting-info">
+              <h4>Quantum Superposition</h4>
+            </div>
+          </a>
+        </div>
+
+        <div class="painting-item" data-aos="zoom-in" data-aos-delay="200">
+          <a href="assets/img/p_atomic.png" class="glightbox" data-gallery="gallery1" title="Atomic Heart">
+            <img src="assets/img/p_atomic.png" alt="Atomic Heart">
+            <div class="painting-info">
+              <h4>Atomic Heart</h4>
+            </div>
+          </a>
+        </div>
+
+        <div class="painting-item" data-aos="zoom-in" data-aos-delay="300">
+          <a href="assets/img/p_neural.png" class="glightbox" data-gallery="gallery1" title="Neural Flux">
+            <img src="assets/img/p_neural.png" alt="Neural Flux">
+            <div class="painting-info">
+              <h4>Neural Flux</h4>
+            </div>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/js/floating-atoms.js"></script>
+  <script>
+    AOS.init();
+    const lightbox = GLightbox({
+      selector: '.glightbox'
+    });
+  </script>
+</body>
+
+</html>
